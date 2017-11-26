@@ -111,7 +111,7 @@ def variancia(vector):
     return (sum(map(lambda x: x ** 2, vector)) - (sum(vector) ** 2) / len(vector)) / (len(vector) - 1)
 
 def intervalo_confianca(media, variancia, n, t_st):
-    interval = t_st * (variancia / math.sqrt(n))
+    interval = t_st * (math.sqrt(variancia) / math.sqrt(n))
     return [media - interval, media + interval]
 
 print v_m_tec[:5]
@@ -130,6 +130,7 @@ i_m_tec = intervalo_confianca(m_tec, var_m_tec, len(v_m_tec), 1.96)
 i_m_ser = intervalo_confianca(m_ser, var_m_ser, len(v_m_ser), 1.96)
 i_m_wait = intervalo_confianca(m_wait, var_m_wait, len(v_m_wait), 1.96)
 i_m_sys = intervalo_confianca(m_sys, var_m_sys, len(v_m_sys), 1.96)
+
 
 print 'tec %f <= u <= %f' % (i_m_tec[0], i_m_tec[1])
 print 'ser %f <= u <= %f' % (i_m_ser[0], i_m_ser[1])
